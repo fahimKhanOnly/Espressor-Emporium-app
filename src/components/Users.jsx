@@ -4,24 +4,23 @@ import { useContext, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { AuthContext } from "../provider/AuthProvider";
 import { auth } from "../firebase/firebase.init";
+import { deleteUser } from "firebase/auth";
 
 
 const Users = () => {
-  let {deleteAcc} = useContext(AuthContext);
+  const {deleteAcc} = useContext(AuthContext);
   let usersData = useLoaderData();
   let [getUser, setUser] = useState(usersData);
 
   const handleEditor = id => {
     console.log(`Edited ${id}`);
   }
-  const handleDelete = (id) => {
-    deleteAcc(auth)
-    .then(() => {
-      fetch(`http://localhost:5000/users/${id}`, {
-        method: "DELETE",
-        headers: {'content-type': 'application/json'},
-      }).then(res => res.json()).then(data => console.log(data)).catch(err => console.log(err.message))
-    }).catch(err => console.log(err.message))
+  const handleDel = (id) => {
+    // let user = auth.currentUser;
+    fetch(`http://localhost:5000/users/${id}`, {
+      method: "DELETE",
+    }).then(data => data.json())
+    .then(data => console.log(data))
 }
   return (
     <div className="container mx-auto">
@@ -42,7 +41,7 @@ const Users = () => {
               getUser.map(data => <tr key={data._id}>
                 <td>{data.email}</td>
                 <td>{data.pass}</td>
-                <td><button onClick={() => handleEditor(data._id)} className="btn btn-sm"><CiEdit /></button> <button onClick={() => handleDelete(data._id, data)} className="btn btn-sm">X</button></td>
+                <td><button onClick={() => handleEditor(data._id)} className="btn btn-sm"><CiEdit /></button> <button onClick={() => handleDel(data._id)} className="btn btn-sm">X</button></td>
               </tr>)
             }
           </tbody>
