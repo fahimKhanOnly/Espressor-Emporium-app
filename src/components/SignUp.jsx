@@ -14,7 +14,7 @@ const SignUp = () => {
 
     createAcc(email, pass).then(result => {
       console.log(result.user.metadata);
-      fetch('http://localhost:5000/users', {
+      fetch('https://espresso-emporium-server-kappa-liart.vercel.app/users', {
         method: "POST",
         headers: {'content-type': 'application/json'},
         body: JSON.stringify(newUser),

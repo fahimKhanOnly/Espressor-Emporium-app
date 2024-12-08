@@ -16,7 +16,7 @@ const AddCoffee = () => {
     const coffeeInfo = {name, chef, supplier, taste, category, details, photo};
     console.log(coffeeInfo);
 
-    fetch('http://localhost:5000/coffee', {
+    fetch('https://espresso-emporium-server-kappa-liart.vercel.app/coffee', {
       method: "POST",
       headers: {"content-type": "application/json"},
       body: JSON.stringify(coffeeInfo)

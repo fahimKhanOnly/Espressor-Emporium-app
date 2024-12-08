@@ -3,8 +3,7 @@ import Header from "./Header";
 import { useContext, useState } from "react";
 import { CiEdit } from "react-icons/ci";
 import { AuthContext } from "../provider/AuthProvider";
-import { auth } from "../firebase/firebase.init";
-import { deleteUser } from "firebase/auth";
+
 
 
 const Users = () => {
@@ -16,8 +15,7 @@ const Users = () => {
     console.log(`Edited ${id}`);
   }
   const handleDel = (id) => {
-    // let user = auth.currentUser;
-    fetch(`http://localhost:5000/users/${id}`, {
+    fetch(`https://espresso-emporium-server-kappa-liart.vercel.app/users/${id}`, {
       method: "DELETE",
     }).then(data => data.json())
     .then(data => console.log(data))

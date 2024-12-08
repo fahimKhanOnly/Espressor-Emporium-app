@@ -5,7 +5,7 @@ const CoffeeCard = ({data}) => {
 
   const deleteHandler = _id => {
     console.log(_id);
-    fetch(`http://localhost:5000/coffee/${_id}`, {
+    fetch(`https://espresso-emporium-server-kappa-liart.vercel.app/coffee/${_id}`, {
       method: "DELETE",
     }).then(res => res.json()).then(output => console.log(output))
   }

@@ -9,7 +9,7 @@ const Coffees = () => {
   return (
     <div className="container mx-auto">
       <Header></Header>
-      <h1 className="text-2xl font-bold mt-5">Gorom Gorom Coffee {data.length}</h1>
+      <h1 className="text-2xl font-bold mt-5">Gorom Gorom Coffee </h1>
       
       <div className="lg:grid grid-cols-2 gap-6">
         {
